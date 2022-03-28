@@ -1,6 +1,7 @@
 #pragma once
 #ifndef NN_H
 #define NN_H
+#define PRINT(x) std::cout << x << std::endl
 
 #include <vector>
 #include <string>
@@ -28,12 +29,18 @@ public:
 	~NeuralNetwork();
 
 	std::vector<float> Feedforward();
+	void Train(std::vector<float> inputs, std::vector<float> targets);
 	void SetInput(std::vector<float> inputs);
+	std::vector<float> predict(std::vector<float> inputs);
 private:
 	std::vector<Layer> m_layers;
 	std::vector<Eigen::MatrixXf> m_weights;
+	//Computed output for each layer
+	std::vector<Eigen::MatrixXf> m_outputs;
 private:
 	void InitWeights();
+
+	inline float Relu(float num);
 };
 
 #endif // !NN_H

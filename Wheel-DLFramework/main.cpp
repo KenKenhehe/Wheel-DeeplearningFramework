@@ -8,14 +8,15 @@
 int main()
 {
     std::vector<Layer> layers;
-    layers.emplace_back(3);
-    layers.emplace_back(4);
-    layers.emplace_back(4);
+    layers.emplace_back(2);
+    layers.emplace_back(2);
+    layers.emplace_back(2);
     
-    std::vector<float> inputs = { 1,3,4 };
+    std::vector<float> inputs = { 1,1};
+    std::vector<float> target = { 1,0 };
 
     NeuralNetwork nn(layers);
     nn.SetInput(inputs);
-    nn.Feedforward();
-
+    //nn.Feedforward();
+    nn.Train(inputs, target);
 }
