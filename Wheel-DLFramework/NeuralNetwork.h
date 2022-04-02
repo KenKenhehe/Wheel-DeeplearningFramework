@@ -7,6 +7,7 @@
 #include <string>
 #include <iostream>
 #include <Eigen/Dense>
+#include <ctime>
 
 class Layer 
 {

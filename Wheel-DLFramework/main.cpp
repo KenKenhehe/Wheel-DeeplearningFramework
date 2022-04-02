@@ -23,7 +23,7 @@ int main()
 	//std::vector<float> inputs{1,1};
 	//std::vector<float> target{ 0 };
 	NeuralNetwork nn(layers);
-
+	srand((unsigned int)time(NULL));
 	for (int i = 0; i < 50000; i++) {
 		std::vector<float> inputs;
 		std::vector<float> target;

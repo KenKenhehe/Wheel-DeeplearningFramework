@@ -2,6 +2,7 @@
 
 NeuralNetwork::NeuralNetwork(std::vector<Layer> layers) : m_layers(layers)
 {
+	srand((unsigned int)time(NULL));
 	InitWeights();
 }
 
@@ -78,6 +79,7 @@ NeuralNetwork::~NeuralNetwork()
 
 void NeuralNetwork::InitWeights()
 {
+	//srand((unsigned int)time(NULL));
 	for (int i = 0; i < m_layers.size(); ++i)
 	{
 		if (i < m_layers.size() - 1)
@@ -121,6 +123,7 @@ std::vector<float> NeuralNetwork::Feedforward()
 		Eigen::MatrixXf current_input(row_num, 1);
 		Eigen::MatrixXf current_bias(m_layers[i + 1].GetInputs()->size(), 1);
 
+		//srand((unsigned int)time(NULL));
 		current_bias.setRandom();
 		m_layers[i].SetBias(current_bias);
 
