@@ -11,12 +11,13 @@
 class Layer 
 {
 public:
-	Layer(int shape, int bias = 1);
+	Layer(int shape);
 
-	float GetBias() { return m_bias; }
+	Eigen::MatrixXf GetBias() { return m_bias; }
+	void SetBias(Eigen::MatrixXf bias) { m_bias = bias; }
 	std::vector<float>* GetInputs() { return m_layer_inputs; }
 private:
-	float m_bias;
+	Eigen::MatrixXf m_bias;
 	int m_shape;
 	std::vector<float>* m_layer_inputs;
 	//TODO:function pointer member for activation function
@@ -41,6 +42,8 @@ private:
 	void InitWeights();
 
 	inline float Relu(float num);
+	inline float sigmoid(float num);
+	inline float dsigmoid(float num);
 };
 
 #endif // !NN_H
